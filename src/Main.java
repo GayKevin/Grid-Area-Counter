@@ -39,9 +39,9 @@ public class Main {
         int x = 0;
         int y = 0;
 
-        for (String aStr : rf.getStr()) {
+        for (char[] aStr : rf.getStr()) {
             y = 0;
-            for (char c : aStr.toCharArray()) {
+            for (char c : aStr) {
                 if (c == 'o') {
                     findOInGrid(findArea(rf, x, y, counterArea++), counterArea++);
                     return;
@@ -64,7 +64,7 @@ public class Main {
         if (x < 0 || x > 7 || y < 0 || y > 7)
             return rf;
 
-        char[] str = rf.getStr()[x].toCharArray();
+        char[] str = rf.getStr()[x];
 
         if (str[y] == 'o') {
             if (rf.getarea().get(counterArea) == null)
@@ -75,7 +75,7 @@ public class Main {
 
 
         str[y] = '#';
-        rf.getStr()[x] = String.valueOf(str);
+        rf.getStr()[x] = str;
         findArea(rf, x + 1, y, counterArea);
         findArea(rf, x - 1, y, counterArea);
         findArea(rf, x, y + 1, counterArea);

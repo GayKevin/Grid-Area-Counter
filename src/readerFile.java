@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 class readerFile {
 
-    private String[] str = new String[8];
+    private char[][] str = new char[8][8];
     private Map<Integer, Integer> area = new HashMap<Integer, Integer>();
 
     /**
@@ -24,7 +24,7 @@ class readerFile {
             Scanner sc = new Scanner(file);
 
             while (sc.hasNextLine()) {
-              str[i++] = sc.nextLine();
+              str[i++] = sc.nextLine().toCharArray();
             }
             sc.close();
         }
@@ -38,8 +38,8 @@ class readerFile {
      * Show the grid
      */
     void showGrid() {
-        for (String aStr : str) {
-            for (char c : aStr.toCharArray())
+        for (char[] aStr : str) {
+            for (char c : aStr)
                 System.out.print(c);
             System.out.println();
         }
@@ -67,7 +67,7 @@ class readerFile {
      * Return the grid inside a String[]
      * @return the grid
      */
-    String[] getStr() {
+    char[][] getStr() {
         return this.str;
     }
 }
