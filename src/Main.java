@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -12,6 +13,7 @@ public class Main {
 
         System.out.println("Grid Area Counter ");
         while (isWorking) {
+            System.out.println("If you want to quit type: q");
             System.out.print("Enter the number of the Grid : ");
             if (sc.hasNextInt()) {
                 readerFile rf = new readerFile(sc.nextInt());
@@ -21,6 +23,9 @@ public class Main {
                     findOInGrid(rf, 1);
                     rf.showArea();
                 }
+            } else if (sc.hasNext()){
+                if (Objects.equals(sc.next(), "q"))
+                    isWorking = false;
             }
         }
     }
@@ -71,8 +76,10 @@ public class Main {
 
         str[y] = '#';
         rf.getStr()[x] = String.valueOf(str);
-        findArea(rf, x, y + 1, counterArea);
         findArea(rf, x + 1, y, counterArea);
+        findArea(rf, x - 1, y, counterArea);
+        findArea(rf, x, y + 1, counterArea);
+        findArea(rf, x, y - 1, counterArea);
 
         return rf;
     }
